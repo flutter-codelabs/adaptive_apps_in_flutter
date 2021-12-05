@@ -6,9 +6,9 @@ import 'package:http/http.dart' as http;
 
 class FlutterDevPlaylists extends ChangeNotifier {
   FlutterDevPlaylists({
-    required String flutterDevAccountId,
+    required String youTubeChannelId,
     required String youTubeApiKey,
-  }) : _flutterDevAccountId = flutterDevAccountId {
+  }) : _youTubeChannelId = youTubeChannelId {
     _api = YouTubeApi(
       _ApiKeyClient(
         client: http.Client(),
@@ -25,19 +25,21 @@ class FlutterDevPlaylists extends ChangeNotifier {
     do {
       final response = await _api.playlists.list(
         ['snippet', 'contentDetails', 'id'],
-        channelId: _flutterDevAccountId,
-        maxResults: 50,
+        channelId: _youTubeChannelId,
+        maxResults: 5,
         pageToken: nextPageToken,
       );
+
       _playlists.addAll(response.items!);
       _playlists.sort((a, b) => a.snippet!.title!
           .toLowerCase()
           .compareTo(b.snippet!.title!.toLowerCase()));
+
       notifyListeners();
     } while (nextPageToken != null);
   }
 
-  final String _flutterDevAccountId;
+  final String _youTubeChannelId;
   late final YouTubeApi _api;
 
   final List<Playlist> _playlists = [];
@@ -58,7 +60,7 @@ class FlutterDevPlaylists extends ChangeNotifier {
       var response = await _api.playlistItems.list(
         ['snippet', 'contentDetails'],
         playlistId: playlistId,
-        maxResults: 25,
+        maxResults: 5,
         pageToken: nextPageToken,
       );
       var items = response.items;

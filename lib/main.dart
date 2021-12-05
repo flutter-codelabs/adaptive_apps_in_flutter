@@ -8,7 +8,7 @@ import 'src/app_state.dart';
 import 'src/playlists.dart';
 
 // From https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw
-const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
+const youTubeChannelId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 
 // ignore: todo
 // TODO: Replace with your YouTube API Key
@@ -23,7 +23,7 @@ void main() {
 
   runApp(ChangeNotifierProvider<FlutterDevPlaylists>(
     create: (BuildContext context) => FlutterDevPlaylists(
-      flutterDevAccountId: flutterDevAccountId,
+      youTubeChannelId: youTubeChannelId,
       youTubeApiKey: youTubeApiKey,
     ),
     child: const PlaylistsApp(),
@@ -37,9 +37,9 @@ class PlaylistsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FlutterDev Playlists',
-      theme: FlexColorScheme.light(scheme: FlexScheme.red).toTheme,
+      theme: FlexColorScheme.light(scheme: FlexScheme.blue).toTheme,
       darkTheme: FlexColorScheme.dark(scheme: FlexScheme.red).toTheme,
-      themeMode: ThemeMode.dark, // Or ThemeMode.System if you'd prefer
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: const Playlists(),
     );

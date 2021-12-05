@@ -9,6 +9,7 @@ class PlaylistDetails extends StatelessWidget {
   const PlaylistDetails(
       {required this.playlistId, required this.playlistName, Key? key})
       : super(key: key);
+
   final String playlistId;
   final String playlistName;
 
@@ -92,7 +93,7 @@ class _PlaylistDetailsListView extends StatelessWidget {
             playlistItem.snippet!.title!,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 18,
-                  // fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
           Text(
@@ -124,7 +125,7 @@ class _PlaylistDetailsListView extends StatelessWidget {
                 'https://www.youtube.com/watch?v=${playlistItem.snippet!.resourceId!.videoId}'),
             builder: (context, followLink) => IconButton(
               onPressed: followLink,
-              color: Colors.red,
+              color: Colors.blue,
               icon: const Icon(Icons.play_circle_fill),
             ),
           ),

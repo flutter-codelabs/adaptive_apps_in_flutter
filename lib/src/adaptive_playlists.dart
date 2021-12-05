@@ -65,6 +65,7 @@ class WideDisplayPlaylists extends StatefulWidget {
 
 class _WideDisplayPlaylistsState extends State<WideDisplayPlaylists> {
   Playlist? selectedPlaylist;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
